@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca API - Documentación</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        h1 { color: #58a6ff; font-size: 2rem; margin-bottom: 0.5rem; }
+        h2 { color: #58a6ff; font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 0.8rem; border-bottom: 1px solid #21262d; padding-bottom: 0.4rem; }
+        h3 { color: #79c0ff; font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 1rem; }
+        .subtitle { color: #8b949e; font-size: 1rem; margin-bottom: 2rem; }
+        .model-table, table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { padding: 0.6rem 1rem; text-align: left; border: 1px solid #21262d; }
+        th { background: #161b22; color: #58a6ff; }
+        td { background: #0d1117; }
+        pre { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; overflow-x: auto; margin: 0.8rem 0; font-size: 0.9rem; }
+        code { font-family: 'Consolas', 'Courier New', monospace; color: #c9d1d9; }
+        .endpoint { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+        .method { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: bold; font-size: 0.85rem; margin-right: 0.5rem; }
+        .get { background: #1a4d2e; color: #3fb950; }
+        .post { background: #3d2e00; color: #d29922; }
+        .put { background: #1a3050; color: #58a6ff; }
+        .delete { background: #4d1a1a; color: #f85149; }
+        .route { font-family: 'Consolas', monospace; font-size: 1rem; color: #c9d1d9; }
+        .desc { color: #8b949e; margin: 0.5rem 0; }
+        .response-label { color: #7ee787; font-weight: bold; margin-top: 0.8rem; }
+        .error-label { color: #f85149; font-weight: bold; margin-top: 0.5rem; }
+        .tech-list { list-style: none; padding: 0; }
+        .tech-list li { padding: 0.3rem 0; }
+        .tech-list li::before { content: "✓ "; color: #3fb950; font-weight: bold; }
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .badge { display: inline-block; background: #1f6feb; color: #fff; padding: 0.15rem 0.5rem; border-radius: 12px; font-size: 0.75rem; margin-left: 0.3rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Biblioteca API</h1>
+        <p class="subtitle">API Web para la gestión de una biblioteca personal, desarrollada con ASP.NET Core 10 y Entity Framework Core usando MySQL como motor de base de datos.</p>
+        <p>Permite administrar una colección de libros: agregar, modificar, eliminar, buscar, y obtener estadísticas y recomendaciones basadas en la cantidad de páginas de cada libro.</p>
+
+        <h2>Modelo de Datos - Libro</h2>
+        <table>
+            <thead><tr><th>Campo</th><th>Tipo</th><th>Descripción</th></tr></thead>
+            <tbody>
+                <tr><td><code>Id</code></td><td>int</td><td>Identificador único (autoincremental)</td></tr>
+                <tr><td><code>Titulo</code></td><td>string</td><td>Título del libro</td></tr>
+                <tr><td><code>Autor</code></td><td>string</td><td>Nombre del autor</td></tr>
+                <tr><td><code>Paginas</code></td><td>int</td><td>Cantidad de páginas</td></tr>
+                <tr><td><code>Leido</code></td><td>boolean</td><td>Indica si el libro ha sido leído</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Endpoints</h2>
+        <p>Base URL: <code>/api/libros</code></p>
+
+        <!-- GET todos -->
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> <span class="route">/api/libros</span></h3>
+            <p class="desc">Retorna la lista completa de libros almacenados en la base de datos.</p>
+            <pre><code>[
+  {
+    "id": 1,
+    "titulo": "El Hobbit",
+    "autor": "J.R.R. Tolkien",
+    "paginas": 310,
+    "leido": true
+  }
+]</code></pre>
+        </div>
+
+        <!-- GET por ID -->
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> <span class="route">/api/libros/{id}</span></h3>
+            <p class="desc">Busca y retorna un libro específico por su ID.</p>
+            <p><strong>Parámetros:</strong> <code>id</code> (int) - Identificador del libro.</p>
+            <pre><code>{
+  "id": 1,
+  "titulo": "El Hobbit",
+  "autor": "J.R.R. Tolkien",
+  "paginas": 310,
+  "leido": true
+}</code></pre>
+            <p class="error-label">404:</p>
+            <pre><code>"Libro no encontrado"</code></pre>
+        </div>
+
+        <!-- GET tipo -->
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> <span class="route">/api/libros/{id}/tipo</span></h3>
+            <p class="desc">Clasifica un libro según su cantidad de páginas.</p>
+            <table>
+                <thead><tr><th>Rango de páginas</th><th>Clasificación</th></tr></thead>
+                <tbody>
+                    <tr><td>Menos de 100</td><td>Libro Corto</td></tr>
+                    <tr><td>100 - 300</td><td>Libro Mediano</td></tr>
+                    <tr><td>Más de 300</td><td>Libro Largo</td></tr>
+                </tbody>
+            </table>
+            <pre><code>{ "tipo": "Libro Mediano" }</code></pre>
+        </div>
+
+        <!-- GET fibonacci -->
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> <span class="route">/api/libros/{id}/fibonacci</span></h3>
+            <p class="desc">Calcula el número de Fibonacci correspondiente al número de páginas del libro.</p>
+            <pre><code>{
+  "titulo": "El Hobbit",
+  "paginas": 310,
+  "numero": 310,
+  "fibonacci": 167769361818756559872424281766416725811394149890590732499100663797129936
+}</code></pre>
+        </div>
+
+        <!-- GET por autor -->
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> <span class="route">/api/libros/autor/{autor}</span></h3>
+            <p class="desc">Retorna todos los libros escritos por el autor indicado (no distingue mayúsculas/minúsculas).</p>
+            <pre><code>[
+  {
+    "id": 1,
+    "titulo": "El Hobbit",
+    "autor": "J.R.R. Tolkien",
+    "paginas": 310,
+    "leido": true
+  }
+]</code></pre>
+            <p class="error-label">404:</p>
+            <pre><code>"No se encontraron libros para el autor especificado"</code></pre>
+        </div>
+
+        <!-- GET resumen -->
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> <span class="route">/api/libros/resumen</span></h3>
+            <p class="desc">Retorna estadísticas generales de la biblioteca.</p>
+            <pre><code>{
+  "totalLibros": 10,
+  "librosLeidos": 6,
+  "librosNoLeidos": 4,
+  "promedioPaginas": 245.5
+}</code></pre>
+        </div>
+
+        <!-- POST libro -->
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> <span class="route">/api/libros</span></h3>
+            <p class="desc">Agrega un nuevo libro a la base de datos. El campo <code>Id</code> se genera automáticamente.</p>
+            <p><strong>Body (application/json):</strong></p>
+            <pre><code>{
+  "titulo": "El Hobbit",
+  "autor": "J.R.R. Tolkien",
+  "paginas": 310,
+  "leido": true
+}</code></pre>
+            <p class="response-label">200:</p>
+            <pre><code>{
+  "id": 1,
+  "titulo": "El Hobbit",
+  "autor": "J.R.R. Tolkien",
+  "paginas": 310,
+  "leido": true
+}</code></pre>
+            <p class="error-label">400:</p>
+            <pre><code>"Libro no válido"</code></pre>
+        </div>
+
+        <!-- POST con recomendacion -->
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> <span class="route">/api/libros/con-recomendacion</span></h3>
+            <p class="desc">Agrega un libro y retorna una recomendación de lectura según la cantidad de páginas.</p>
+            <table>
+                <thead><tr><th>Páginas</th><th>Recomendación</th></tr></thead>
+                <tbody>
+                    <tr><td>&lt; 100</td><td>Ideal para leer en un día</td></tr>
+                    <tr><td>100 - 300</td><td>Lectura normal</td></tr>
+                    <tr><td>&gt; 300</td><td>Lectura larga</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Body (application/json):</strong></p>
+            <pre><code>{
+  "titulo": "El Hobbit",
+  "autor": "J.R.R. Tolkien",
+  "paginas": 310,
+  "leido": true
+}</code></pre>
+            <p class="response-label">200:</p>
+            <pre><code>{
+  "libro": {
+    "id": 1,
+    "titulo": "El Hobbit",
+    "autor": "J.R.R. Tolkien",
+    "paginas": 310,
+    "leido": true
+  },
+  "recomendacion": "Lectura larga"
+}</code></pre>
+        </div>
+
+        <!-- PUT libro -->
+        <div class="endpoint">
+            <h3><span class="method put">PUT</span> <span class="route">/api/libros/{id}</span></h3>
+            <p class="desc">Actualiza todos los campos de un libro existente.</p>
+            <p><strong>Parámetros:</strong> <code>id</code> (int) - Identificador del libro a modificar.</p>
+            <p><strong>Body (application/json):</strong></p>
+            <pre><code>{
+  "titulo": "El Hobbit (Edición Actualizada)",
+  "autor": "J.R.R. Tolkien",
+  "paginas": 320,
+  "leido": true
+}</code></pre>
+            <p class="error-label">404:</p>
+            <pre><code>"Libro no encontrado"</code></pre>
+        </div>
+
+        <!-- PUT marcar leido -->
+        <div class="endpoint">
+            <h3><span class="method put">PUT</span> <span class="route">/api/libros/{id}/marcar-leido</span></h3>
+            <p class="desc">Marca el campo <code>Leido</code> del libro como <code>true</code>. No requiere body.</p>
+            <p class="response-label">200:</p>
+            <pre><code>"El libro ha sido marcado como leído."</code></pre>
+            <p class="error-label">404:</p>
+            <pre><code>"Libro no encontrado"</code></pre>
+        </div>
+
+        <!-- DELETE -->
+        <div class="endpoint">
+            <h3><span class="method delete">DELETE</span> <span class="route">/api/libros/{id}</span></h3>
+            <p class="desc">Elimina permanentemente un libro de la base de datos.</p>
+            <p class="response-label">200:</p>
+            <pre><code>{
+  "id": 1,
+  "titulo": "El Hobbit",
+  "autor": "J.R.R. Tolkien",
+  "paginas": 310,
+  "leido": true
+}</code></pre>
+            <p class="error-label">404:</p>
+            <pre><code>"Libro no encontrado"</code></pre>
+        </div>
+
+        <h2>Tecnologías Utilizadas</h2>
+        <ul class="tech-list">
+            <li>ASP.NET Core 10</li>
+            <li>Entity Framework Core</li>
+            <li>MySQL</li>
+            <li>OpenAPI (modo Development)</li>
+        </ul>
+    </div>
+</body>
+</html>
