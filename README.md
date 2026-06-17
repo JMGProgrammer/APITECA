@@ -5,7 +5,7 @@
 [![MySQL](https://img.shields.io/badge/MySQL-Database-orange)](https://www.mysql.com)
 [![Railway](https://img.shields.io/badge/Railway-Deploy-green)](https://railway.app)
 
-API Web para la gestión de una biblioteca personal, desarrollada con **ASP.NET Core 10** y **Entity Framework Core** usando **MySQL** como motor de base de datos.
+Mi primer API Web totalmente funcional. Sirve como ejemplo educativo para consumo de APIs, y ademas de gestión de una biblioteca personal simple, desarrollada con **ASP.NET Core 10** y **Entity Framework Core** usando **MySQL** como motor de base de datos.
 
 Permite administrar una colección de libros: agregar, modificar, eliminar, buscar, y obtener estadísticas y recomendaciones basadas en la cantidad de páginas de cada libro.
 
