@@ -15,7 +15,7 @@ Permite administrar una colección de libros: agregar, modificar, eliminar, busc
 
 - **API en producción:** [https://api-web-bibliteca-test-production.up.railway.app/](https://api-web-bibliteca-test-production.up.railway.app/)
 - **Documentación HTML:** [https://api-web-bibliteca-test-production.up.railway.app/](https://api-web-bibliteca-test-production.up.railway.app/)
-- **Repositorio GitHub:** [https://github.com/JMGProgrammer/API-Web-Bibliteca-Test](https://github.com/JMGProgrammer/API-Web-Bibliteca-Test)
+- **Repositorio GitHub:** [https://github.com/JMGProgrammer/API-Web-Bibliteca-Test](https://github.com/JMGProgrammer/APITECA)
 
 ---
 
