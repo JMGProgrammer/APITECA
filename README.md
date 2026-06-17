@@ -1,8 +1,21 @@
 # Actividad-BibliotecaAPI
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/JMGProgrammer/API-Web-Bibliteca-Test)
+[![.NET](https://img.shields.io/badge/.NET-10-purple)](https://dotnet.microsoft.com)
+[![MySQL](https://img.shields.io/badge/MySQL-Database-orange)](https://www.mysql.com)
+[![Railway](https://img.shields.io/badge/Railway-Deploy-green)](https://railway.app)
+
 API Web para la gestión de una biblioteca personal, desarrollada con **ASP.NET Core 10** y **Entity Framework Core** usando **MySQL** como motor de base de datos.
 
 Permite administrar una colección de libros: agregar, modificar, eliminar, buscar, y obtener estadísticas y recomendaciones basadas en la cantidad de páginas de cada libro.
+
+---
+
+## Enlaces
+
+- **API en producción:** [https://api-web-bibliteca-test-production.up.railway.app/](https://api-web-bibliteca-test-production.up.railway.app/)
+- **Documentación HTML:** [https://api-web-bibliteca-test-production.up.railway.app/](https://api-web-bibliteca-test-production.up.railway.app/)
+- **Repositorio GitHub:** [https://github.com/JMGProgrammer/API-Web-Bibliteca-Test](https://github.com/JMGProgrammer/API-Web-Bibliteca-Test)
 
 ---
 
@@ -20,9 +33,11 @@ Permite administrar una colección de libros: agregar, modificar, eliminar, busc
 
 ## Manual de Usuario - Endpoints
 
-La base URL por defecto es: `https://localhost:xxxx` (puerto según configuración)
+**Base URL (Producción):** `https://api-web-bibliteca-test-production.up.railway.app`
 
 Todas las rutas están bajo el prefijo: `/api/libros`
+
+**Ejemplo completo:** `https://api-web-bibliteca-test-production.up.railway.app/api/libros`
 
 ---
 
@@ -341,6 +356,8 @@ DELETE /api/libros/{id}
 
 ## Deploy en Railway
 
+> **Repositorio público:** [https://github.com/JMGProgrammer/API-Web-Bibliteca-Test](https://github.com/JMGProgrammer/API-Web-Bibliteca-Test)
+
 ### Prerrequisitos
 - Cuenta en [Railway](https://railway.app)
 - Cuenta en GitHub
@@ -421,9 +438,9 @@ db.Database.EnsureCreated();
 Haz push de ese cambio, espera a que se despliegue, y luego puedes quitar esas líneas.
 
 ### Paso 8: Verificar
-1. Abre tu dominio generado: `https://tu-proyecto.up.railway.app`
+1. Abre tu dominio generado: `https://api-web-bibliteca-test-production.up.railway.app`
 2. Verás la documentación HTML de la API.
-3. Prueba los endpoints con la URL: `https://tu-proyecto.up.railway.app/api/libros`
+3. Prueba los endpoints con la URL: `https://api-web-bibliteca-test-production.up.railway.app/api/libros`
 
 ### Resumen de variables de entorno
 
