@@ -13,9 +13,9 @@ Permite administrar una colección de libros: agregar, modificar, eliminar, busc
 
 ## Enlaces
 
-- **API en producción:** [https://api-web-bibliteca-test-production.up.railway.app/](https://api-web-bibliteca-test-production.up.railway.app/)
-- **Documentación HTML:** [https://api-web-bibliteca-test-production.up.railway.app/](https://api-web-bibliteca-test-production.up.railway.app/)
-- **Repositorio GitHub:** [https://github.com/JMGProgrammer/API-Web-Bibliteca-Test](https://github.com/JMGProgrammer/APITECA)
+- **API en producción:** [https://apiteca.up.railway.app/](https://apiteca.up.railway.app/)
+- **Documentación HTML:** [https://apiteca.up.railway.app/](https://apiteca.up.railway.app/)
+- **Repositorio GitHub:** [https://github.com/JMGProgrammer/APITECA](https://github.com/JMGProgrammer/APITECA)
 
 ---
 
@@ -33,11 +33,11 @@ Permite administrar una colección de libros: agregar, modificar, eliminar, busc
 
 ## Manual de Usuario - Endpoints
 
-**Base URL (Producción):** `https://api-web-bibliteca-test-production.up.railway.app`
+**Base URL (Producción):** `https://apiteca.up.railway.app`
 
 Todas las rutas están bajo el prefijo: `/api/libros`
 
-**Ejemplo completo:** `https://api-web-bibliteca-test-production.up.railway.app/api/libros`
+**Ejemplo completo:** `https://apiteca.up.railway.app/api/libros`
 
 ---
 
