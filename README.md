@@ -33,11 +33,11 @@ Permite administrar una colección de libros: agregar, modificar, eliminar, busc
 
 ## Manual de Usuario - Endpoints
 
-**Base URL (Producción):** `https://api-web-bibliteca-test-production.up.railway.app`
+**Base URL (Producción):** `https://apiteca.up.railway.app`
 
 Todas las rutas están bajo el prefijo: `/api/libros`
 
-**Ejemplo completo:** `https://api-web-bibliteca-test-production.up.railway.app/api/libros`
+**Ejemplo completo:** `https://apiteca.up.railway.app/api/libros`
 
 ---
 
